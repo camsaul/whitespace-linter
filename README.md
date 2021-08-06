@@ -57,11 +57,11 @@ clj -T:whitespace-linter lint :paths src
 
 Several options are currently supported:
 
-| Option | Default | Description | 
-| --- | --- | --- | 
-| `:paths` | `./` | Directory(ies) or filename(s) to search for files to lint in. | 
-| `:include-patterns` | `[#"\.clj.?$" #"\.edn.?$"]` | File paths that don't match at least one of these patterns will be ignored. | 
-| `:exclude-patterns` | `nil` | File paths that match any of these patterns will be ignored. | 
+| Option | Default | Description |
+| --- | --- | --- |
+| `:paths` | `./` | Directory(ies) or filename(s) to search for files to lint in. |
+| `:include-patterns` | `[#"."]` | File paths that don't match at least one of these patterns will be ignored. |
+| `:exclude-patterns` | `nil` | File paths that match any of these patterns will be ignored. |
 | `:max-file-size-kb` | `1024` | Files over this size will be ignored. |
 
 `:paths` accepts either strings, symbols, or a collection of multiple strings/symbols.
