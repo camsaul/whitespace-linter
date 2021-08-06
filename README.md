@@ -74,7 +74,7 @@ literal (regex literals cannot be embedded in EDN).
 The code uses [Methodical](https://github.com/camsaul/methodical) under the hood for easy extensibility. It takes
 advantage of the
 [`concat-method-combination`](https://cljdoc.org/d/methodical/methodical/0.12.0/api/methodical.core#concat-method-combination)
-which calls *every* matching multimethod, and concatenates the results, and the
+which calls *every* matching multimethod, and concatenates the results; and the
 [`everything-dispatcher`](https://cljdoc.org/d/methodical/methodical/0.12.0/api/methodical.core#everything-dispatcher),
 which considers every method implementation to be a matching regardless of the arguments passed in.
 
