@@ -79,11 +79,11 @@ advantage of the
 [`concat-method-combination`](https://cljdoc.org/d/methodical/methodical/0.12.0/api/methodical.core#concat-method-combination)
 which calls *every* matching multimethod, and concatenates the results; and the
 [`everything-dispatcher`](https://cljdoc.org/d/methodical/methodical/0.12.0/api/methodical.core#everything-dispatcher),
-which considers every method implementation to be matching regardless of the arguments passed in.
+which considers every method implementation to be matching regardless of the arguments passed in. This means all you need to do to extend it is write a new method implementation; Methodical will run it automatically along with the ones that ship out of the box.
 
 ### Adding Linters
 
-Adding a new linter is as easy as writing a new multimethod:
+To add new linters you should create a new namespace that you use in place of `whitespace-linter`. Add method implementations to it:
 
 ```clj
 ;; linters/my_project/linters/whitespace_linter.clj
@@ -104,7 +104,7 @@ Adding a new linter is as easy as writing a new multimethod:
 Linters should return a sequence of error maps with the keys `:message` and `:linter` for any errors they decide
 exist. `options` are those passed in to the command via the CLI or `:exec-args` in the `deps.edn` file.
 
-Put your customizations in a new file that acts as a wrapper for `whitespace-linter`, and use it in its place. Update
+Update
 your `deps.edn` to use your new namespace:
 
 ```clj
