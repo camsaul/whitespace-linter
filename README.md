@@ -42,7 +42,7 @@ You can configure the linter by setting `:exec-args` in the `deps.edn` alias, or
 `-T:whitespace-linter lint`:
 
 ```
-clj -T:whitespace-linter lint :exclude-patterns '["resources/i18n"]'
+clj -T:whitespace-linter lint :paths src
 ```
 
 ```clj
