@@ -115,8 +115,11 @@
 (m/defmethod lint-file :file/ends-in-newline
   [^File file options]
   (when (with-open [ra-file (java.io.RandomAccessFile. file "r")]
-          (.seek ra-file (dec (.length ra-file)))
-          (not= (char (.readByte ra-file)) \newline))
+          (let [file-length (.length ra-file)]
+            ;; ignore empty files
+            (when (pos? file-length)
+              (.seek ra-file (dec file-length))
+              (not= (char (.readByte ra-file)) \newline))))
     [{:linter      :file/ends-in-newline
       :message     "Last line of file should end in a newline character"
       ;; TODO -- this seems like a grossly inefficient way to get the number of lines in the file
@@ -125,13 +128,15 @@
 
 (m/defmethod lint-file :file/no-trailing-blank-lines
   [^File file options]
-  (with-open [r (LineNumberReader. (io/reader file))]
-    (let [last-line (last (take-while some? (repeatedly #(.readLine r))))]
-      (when (str/blank? last-line)
-        [{:linter      :file/no-trailing-blank-lines
-          :message     "File should not end in a blank line"
-          :line-number (.getLineNumber r)
-          :line        last-line}]))))
+  ;; ignore empty files
+  (when (pos? (.length file))
+    (with-open [r (LineNumberReader. (io/reader file))]
+      (let [last-line (last (take-while some? (repeatedly #(.readLine r))))]
+        (when (str/blank? last-line)
+          [{:linter      :file/no-trailing-blank-lines
+            :message     "File should not end in a blank line"
+            :line-number (.getLineNumber r)
+            :line        last-line}])))))
 
 ;; TODO -- a linter that checks that the file uses UTF-8 encoding
 
