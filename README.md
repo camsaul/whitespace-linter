@@ -1,5 +1,9 @@
 # Cam's Next-Level Whitespace Linter
 
+```
+{com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
+```
+
 Fast multithreaded and customizable linter that checks files for trailing whitespace, tabs, files that don't end in
 newlines, files that end in blank lines, [Unicode characters that look maddeningly similar to ASCII
 ones](https://github.com/camsaul/emacs-unicode-troll-stopper), and invisible Unicode characters. Written in Clojure,
@@ -14,7 +18,7 @@ Requires the Clojure CLI (1.10.3.905 or higher). Install it using the instructio
 
 ```
 clojure -Sdeps \
-  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "5e88d5c3755e5c47747f6cd9cce2f3e5d895e831"}}
+  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
                                   :ns-default whitespace-linter}}}' \
   -T:whitespace-linter lint
 ```
@@ -26,7 +30,7 @@ Add it to your `deps.edn`:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "5e88d5c3755e5c47747f6cd9cce2f3e5d895e831"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
    :ns-default whitespace-linter}}}
 ```
 
@@ -48,7 +52,7 @@ clj -T:whitespace-linter lint :paths src
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "5e88d5c3755e5c47747f6cd9cce2f3e5d895e831"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
    :ns-default whitespace-linter
    :exec-args  {:paths            ["src" "test" "resources"]
                 :include-patterns ["\\.clj.?$" "\\.jsx?$" "\\.edn$" "\\.yaml$" "\\.json$" "\\.html$"]
@@ -107,7 +111,7 @@ your `deps.edn` to use your new namespace:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "5e88d5c3755e5c47747f6cd9cce2f3e5d895e831"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
    :ns-default my-project.linters.whitespace-linter
    :paths      ["linters"]}}}
 ```
