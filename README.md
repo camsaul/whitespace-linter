@@ -5,6 +5,8 @@ newlines, files that end in blank lines, [Unicode characters that look maddening
 ones](https://github.com/camsaul/emacs-unicode-troll-stopper), and invisible Unicode characters. Written in Clojure,
 but works on any sort of text file.
 
+![demo](https://user-images.githubusercontent.com/1455846/128442912-e5b8c4bf-e2b9-41ec-bf99-30c1a1fa379f.gif)
+
 # Standalone Usage
 
 Requires the Clojure CLI (1.10.3.905 or higher). Install it using the instructions
@@ -55,12 +57,12 @@ clj -T:whitespace-linter lint :exclude-patterns '["resources/i18n"]'
 
 Several options are currently supported:
 
-| Option | Default | Description | Example |
-| --- | --- | --- | --- |
-| `:paths` | `./` | Directory(ies) or filename(s) to search for files to lint in. | `:paths ["src"]` |
-| `:include-patterns` | `[#"\.clj.?$" #"\.edn.?$"]` | File paths that don't match at least one of these patterns will be ignored. | `:include-patterns ["\\.cljx?$"]` |
-| `:exclude-patterns` | `nil` | File paths that match any of these patterns will be ignored. | `:exclude-patterns ["resources"]` |
-| `:max-file-size-kb` | `1024` | Files over this size will be ignored. | `:max-file-size-kb 512` |
+| Option | Default | Description | 
+| --- | --- | --- | 
+| `:paths` | `./` | Directory(ies) or filename(s) to search for files to lint in. | 
+| `:include-patterns` | `[#"\.clj.?$" #"\.edn.?$"]` | File paths that don't match at least one of these patterns will be ignored. | 
+| `:exclude-patterns` | `nil` | File paths that match any of these patterns will be ignored. | 
+| `:max-file-size-kb` | `1024` | Files over this size will be ignored. |
 
 `:paths` accepts either strings, symbols, or a collection of multiple strings/symbols.
 
@@ -141,7 +143,7 @@ which situation is most appropriate:
 
 ### Removing Built-In Linters
 
-You can also remove built-in linters using Methodical's `remove-primary-method!`:
+You can also remove built-in linters using Methodical's [`remove-primary-method!`](https://cljdoc.org/d/methodical/methodical/0.12.0/api/methodical.core#remove-primary-method!):
 
 ```clj
 (m/remove-primary-method! #'wsl/lint-char :character/confusing-unicode-character)
