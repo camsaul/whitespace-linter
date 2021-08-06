@@ -56,6 +56,7 @@ clj -T:whitespace-linter lint :exclude-patterns '["resources/i18n"]'
 Several options are currently supported:
 
 | Option | Default | Description | Example |
+| --- | --- | --- | --- |
 | `:paths` | `./` | Directory(ies) or filename(s) to search for files to lint in. | `:paths ["src"]` |
 | `:include-patterns` | `[#"\.clj.?$" #"\.edn.?$"]` | File paths that don't match at least one of these patterns will be ignored. | `:include-patterns ["\\.cljx?$"]` |
 | `:exclude-patterns` | `nil` | File paths that match any of these patterns will be ignored. | `:exclude-patterns ["resources"]` |
