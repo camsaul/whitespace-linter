@@ -197,8 +197,7 @@
 
 (def default-options
   {:paths            ["."]
-   :include-patterns [#"\.clj.?$"
-                      #"\.edn.?$"]
+   :include-patterns [#"\.clj.?$" #"\.edn.?$"]
    :max-file-size-kb 1024 ; anything over one megabyte is probably a little big to be linting.
    ::exit-on-finish  true
    ::progress-bar    true})
