@@ -154,6 +154,10 @@ You can also remove built-in linters using Methodical's [`remove-primary-method!
 There is not currently a way to selectively disable certain linters for certain files, altho it seems like it wouldn't
 be to hard to add... PRs are welcome.
 
+# Add it as a GitHub Action
+
+Here's an example GitHub action configuration to add the whitespace linter to your project: https://github.com/metabase/metabase/blob/30b54faa9599bff8d17bb46bef1b838de5334135/.github/workflows/whitespace.yml
+
 # Interactive/Programmatic Usage
 
 For interactive or programmatic usage, you can use `whitespace-linter/lint-interactive` instead of `lint`. This
