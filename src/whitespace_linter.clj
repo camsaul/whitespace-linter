@@ -95,6 +95,26 @@
 
 ;; TODO -- a linter that checks line ends in `\n`, not `\r\n`. (i.e., uses UNIX line endings instead of Windows)
 
+(defn skip-next [pred]
+  (fn [rf]
+    (let [normal (Object.)
+          skip (Object.)
+          flag (volatile! normal)]
+      (fn
+        ([result] (rf result))
+        ([result x]
+         (cond
+           (identical? @flag skip)
+           (do (vreset! flag normal)
+               result)
+
+           (pred x)
+           (do (vreset! flag skip)
+               result)
+
+           :else
+           (rf result x)))))))
+
 (m/defmulti lint-file
   {:arglists '([^File file options])}
   :none
@@ -105,12 +125,16 @@
   [^File file options]
   (with-open [r (LineNumberReader. (io/reader file))]
     (into []
-          (comp (take-while some?) cat)
+          (comp
+            (take-while some?)
+            (skip-next (fn [[_line-number line]] (.contains ^String line "<skip lint>")))
+            (map (fn [[line-number line]]
+                   (for [error (lint-line line options)]
+                     (assoc error :line-number line-number, :line line))))
+            cat)
           (repeatedly (fn []
                         (when-let [line (.readLine r)]
-                          (let [line-number (.getLineNumber r)]
-                            (for [error (lint-line line options)]
-                              (assoc error :line-number line-number, :line line)))))))))
+                          [(.getLineNumber r) line]))))))
 
 (m/defmethod lint-file :file/ends-in-newline
   [^File file options]
