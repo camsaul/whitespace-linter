@@ -70,8 +70,7 @@ Several options are currently supported:
 
 `:paths` accepts either strings, symbols, or a collection of multiple strings/symbols.
 
-`:include-patterns` and `:exclude-patterns` accept either Strings or regex literals Accepts either string or regex
-literal (regex literals cannot be embedded in EDN).
+`:include-patterns` and `:exclude-patterns` accept either Strings or regex literals (regex literals cannot be embedded in EDN, so use string equivalents instead).
 
 # Extensibility
 
