@@ -1,7 +1,7 @@
 # Cam's Next-Level Whitespace Linter
 
 ```
-{com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
+{com.github.camsaul/whitespace-linter {:sha "b25716745f5875194bc38364e498d0ddda51f4b0"}}
 ```
 
 Fast multithreaded and customizable linter that checks files for trailing whitespace, tabs, files that don't end in
@@ -18,7 +18,7 @@ Requires the Clojure CLI (1.10.3.905 or higher). Install it using the instructio
 
 ```
 clojure -Sdeps \
-  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
+  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "b25716745f5875194bc38364e498d0ddda51f4b0"}}
                                   :ns-default whitespace-linter}}}' \
   -T:whitespace-linter lint
 ```
@@ -30,7 +30,7 @@ Add it to your `deps.edn`:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "b25716745f5875194bc38364e498d0ddda51f4b0"}}
    :ns-default whitespace-linter}}}
 ```
 
@@ -52,7 +52,7 @@ clj -T:whitespace-linter lint :paths src
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "b25716745f5875194bc38364e498d0ddda51f4b0"}}
    :ns-default whitespace-linter
    :exec-args  {:paths            ["src" "test" "resources"]
                 :include-patterns ["\\.clj.?$" "\\.jsx?$" "\\.edn$" "\\.yaml$" "\\.json$" "\\.html$"]
@@ -110,7 +110,7 @@ your `deps.edn` to use your new namespace:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "25f797330742aad0d6b5c86f763e9d306157a933"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "b25716745f5875194bc38364e498d0ddda51f4b0"}}
    :ns-default my-project.linters.whitespace-linter
    :paths      ["linters"]}}}
 ```
