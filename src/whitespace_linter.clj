@@ -6,7 +6,7 @@
             [methodical.core :as m]
             [progrock.core :as pr])
   (:import [java.io File LineNumberReader]
-           [java.nio.file Files FileVisitOption Path]
+           [java.nio.file Files FileSystems FileVisitOption Path]
            java.nio.file.attribute.BasicFileAttributes
            java.util.function.BiPredicate))
 
@@ -204,7 +204,7 @@
 
 (m/defmethod find-files-to-lint String
   [^String s options]
-  (find-files-to-lint (Path/of s (into-array String [])) options))
+  (find-files-to-lint (.getPath (FileSystems/getDefault) s (into-array String [])) options))
 
 (m/defmethod find-files-to-lint clojure.lang.Symbol
   [symb options]
