@@ -72,6 +72,8 @@ Several options are currently supported:
 
 `:include-patterns` and `:exclude-patterns` accept either Strings or regex literals (regex literals cannot be embedded in EDN, so use string equivalents instead).
 
+Windows users: The backslash is not recognized as a file separator, use the forward slash `/` for the file separator character in paths and patterns.
+
 # Extensibility
 
 The code uses [Methodical](https://github.com/camsaul/methodical) under the hood for easy extensibility. It takes

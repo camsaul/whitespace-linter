@@ -164,8 +164,13 @@
   (fn [file-or-dir _]
     (type file-or-dir)))
 
+(defn unix-style-path [path]
+  (if (not= "/" File/separator)
+    (str/replace path File/separator "/")
+    path))
+
 (defn lint-file? ^Boolean [^Path path {:keys [include-patterns exclude-patterns max-file-size-kb]}]
-  (let [path-str         (str path)
+  (let [path-str         (unix-style-path (str path))
         matches-pattern? (fn [pattern]
                            (re-find pattern path-str))]
     (boolean
