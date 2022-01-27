@@ -1,7 +1,7 @@
 # Cam's Next-Level Whitespace Linter
 
 ```
-{com.github.camsaul/whitespace-linter {:sha "81381ea6ddc2c27862cdb4df451e413a047d2411"}}
+{com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
 ```
 
 Fast multithreaded and customizable linter that checks files for trailing whitespace, tabs, files that don't end in
@@ -18,7 +18,7 @@ Requires the Clojure CLI (1.10.3.905 or higher). Install it using the instructio
 
 ```
 clojure -Sdeps \
-  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "81381ea6ddc2c27862cdb4df451e413a047d2411"}}
+  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
                                   :ns-default whitespace-linter}}}' \
   -T:whitespace-linter lint
 ```
