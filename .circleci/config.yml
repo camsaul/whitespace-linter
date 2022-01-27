@@ -41,7 +41,9 @@ jobs:
           keys:
             - deps-{{ checksum "deps.edn" }}
             - deps
-      - run: clojure -P -X:check:jar:deploy
+      - run: clojure -P -X:jar
+      - run: clojure -P -X:check
+      - run: clojure -P -X:deploy
       - save_cache:
           key: deps-{{ checksum "deps.edn" }}
           paths:
@@ -65,7 +67,7 @@ jobs:
     executor: default
     steps:
       - attach-workspace
-      - run: ./.circleci/deploy.sh
+      - run: .circleci/release.sh
 
 
 ########################################################################################################################

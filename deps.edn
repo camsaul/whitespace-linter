@@ -5,7 +5,6 @@
   progrock/progrock     {:mvn/version "0.1.2"}}
 
  :aliases
-
  {
   ;; clojure -M:check
   :check
