@@ -1,7 +1,7 @@
 # Cam's Next-Level Whitespace Linter
 
 ```
-{com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
+{com.github.camsaul/whitespace-linter {:sha "d10134619f9a53127a17409a6037879452f01bc7"}}
 ```
 
 Fast multithreaded and customizable linter that checks files for trailing whitespace, tabs, carriage returns, files that don't end in
@@ -18,7 +18,7 @@ Requires the Clojure CLI (1.10.3.905 or higher). Install it using the instructio
 
 ```
 clojure -Sdeps \
-  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
+  '{:aliases {:whitespace-linter {:deps {com.github.camsaul/whitespace-linter {:sha "d10134619f9a53127a17409a6037879452f01bc7"}}
                                   :ns-default whitespace-linter}}}' \
   -T:whitespace-linter lint
 ```
@@ -30,7 +30,7 @@ Add it to your `deps.edn`:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "d10134619f9a53127a17409a6037879452f01bc7"}}
    :ns-default whitespace-linter}}}
 ```
 
@@ -112,7 +112,7 @@ your `deps.edn` to use your new namespace:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "d10134619f9a53127a17409a6037879452f01bc7"}}
    :ns-default my-project.linters.whitespace-linter
    :paths      ["linters"]}}}
 ```
