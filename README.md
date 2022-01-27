@@ -4,7 +4,7 @@
 {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
 ```
 
-Fast multithreaded and customizable linter that checks files for trailing whitespace, tabs, files that don't end in
+Fast multithreaded and customizable linter that checks files for trailing whitespace, tabs, carriage returns, files that don't end in
 newlines, files that end in blank lines, [Unicode characters that look maddeningly similar to ASCII
 ones](https://github.com/camsaul/emacs-unicode-troll-stopper), and invisible Unicode characters. Written in Clojure,
 but works on any sort of text file.

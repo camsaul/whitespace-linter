@@ -157,6 +157,19 @@
           :line-number (.getLineNumber r)
           :line        last-line}]))))
 
+;; NOTE: at the moment we don't inform of the specific lines at fault,
+;; because LineNumberReader abstracts over \return characters,
+;; so we can't use LineNumberReader for detecting them.
+(m/defmethod lint-file :file/no-carriage-returns
+  [^File file options]
+  (with-open [r (io/reader file)]
+    (let [contents (slurp r)
+          matches (count (re-seq #"\r" contents))]
+      (when (pos? matches)
+        [{:linter  :file/no-carriage-returns
+          :message (format "Found %s carriage return characters. Please use Unix newlines instead!"
+                           matches)}]))))
+
 ;; TODO -- a linter that checks that the file uses UTF-8 encoding
 
 (m/defmulti find-files-to-lint
