@@ -30,7 +30,7 @@ Add it to your `deps.edn`:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "81381ea6ddc2c27862cdb4df451e413a047d2411"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
    :ns-default whitespace-linter}}}
 ```
 
@@ -52,7 +52,7 @@ clj -T:whitespace-linter lint :paths src
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "81381ea6ddc2c27862cdb4df451e413a047d2411"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
    :ns-default whitespace-linter
    :exec-args  {:paths            ["src" "test" "resources"]
                 :include-patterns ["\\.clj.?$" "\\.jsx?$" "\\.edn$" "\\.yaml$" "\\.json$" "\\.html$"]
@@ -112,7 +112,7 @@ your `deps.edn` to use your new namespace:
 ```clj
 {:aliases
  {:whitespace-linter
-  {:deps       {com.github.camsaul/whitespace-linter {:sha "b25716745f5875194bc38364e498d0ddda51f4b0"}}
+  {:deps       {com.github.camsaul/whitespace-linter {:sha "ddfcb3c8f4b3bedc6a0d536780840589ab5f0ec4"}}
    :ns-default my-project.linters.whitespace-linter
    :paths      ["linters"]}}}
 ```
