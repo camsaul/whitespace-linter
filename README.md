@@ -1,5 +1,7 @@
 # Cam's Next-Level Whitespace Linter
 
+[![Clojars Project](https://img.shields.io/clojars/v/com.camsaul/whitespace-linter.svg)](https://clojars.org/com.camsaul/whitespace-linter)
+
 ```
 {com.github.camsaul/whitespace-linter {:sha "d10134619f9a53127a17409a6037879452f01bc7"}}
 ```

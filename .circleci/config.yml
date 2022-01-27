@@ -1,0 +1,96 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: /home/circleci/camsaul/whitespace-linter/
+    docker:
+      - image: circleci/clojure:openjdk-17-tools-deps-1.10.3.822-buster
+
+commands:
+
+  attach-workspace:
+    steps:
+      - attach_workspace:
+          at: /home/circleci/
+
+jobs:
+
+  checkout:
+    executor: default
+    steps:
+      - restore_cache:
+          keys:
+            - source-{{ .Branch }}-{{ .Revision }}
+            - source-{{ .Branch }}
+            - source-
+      - checkout
+      - save_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - .git
+      - persist_to_workspace:
+          root: /home/circleci/
+          paths:
+            - camsaul/whitespace-linter
+
+  deps:
+    executor: default
+    steps:
+      - attach-workspace
+      - restore_cache:
+          keys:
+            - deps-{{ checksum "deps.edn" }}
+            - deps
+      - run: clojure -P -X:check:jar:deploy
+      - save_cache:
+          key: deps-{{ checksum "deps.edn" }}
+          paths:
+            - /home/circleci/.m2
+      - persist_to_workspace:
+          root: /home/circleci/
+          paths:
+            - .m2
+            - .gitlibs
+
+  clojure:
+    parameters:
+      command:
+        type: string
+    executor: default
+    steps:
+      - attach-workspace
+      - run: clojure << parameters.command >>
+
+  deploy:
+    executor: default
+    steps:
+      - attach-workspace
+      - run: ./.circleci/deploy.sh
+
+
+########################################################################################################################
+#                                                      WORKFLOWS                                                       #
+########################################################################################################################
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - checkout
+
+      - deps:
+          requires:
+            - checkout
+
+      - clojure:
+          name: check
+          requires:
+            - deps
+          command: -M:check
+
+      - deploy:
+          requires:
+            - check
+          filters:
+            branches:
+              only: master
