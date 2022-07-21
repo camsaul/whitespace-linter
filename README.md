@@ -44,10 +44,27 @@ clj -T:whitespace-linter lint
 
 # Running with Leiningen
 
-Add the whitespace linter dependency info to your `project.clj` and run it with
+The easiest way to use the whitespace linter with Leiningen is to create an alias.
+
+```clj
+(defproject my-project "1.0.0-SNAPSHOT"
+  :profiles
+  {:whitespace-linter
+   {:dependencies [[com.camsaul/whitespace-linter "2022.01.27.04.43" :exclusions [org.clojure/clojure]]]}}
+
+  :aliases
+  {"whitespace-linter"
+   ["with-profile" "+whitespace-linter"
+    "run" "-m" "clojure.main" "-e" (do
+                                     (require 'whitespace-linter)
+                                     (whitespace-linter/lint {:paths            ["src" "test"]
+                                                              :include-patterns [#".clj[cs]?$"]}))]})
+```
+
+Then run it with
 
 ```
-lein run -m clojure.main -e "(require 'whitespace-linter) (whitespace-linter/lint {:paths [\"src\" \"test\"]})"
+lein whitespace-linter
 ```
 
 # Configuration
