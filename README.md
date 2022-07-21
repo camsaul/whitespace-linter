@@ -42,6 +42,14 @@ and run it:
 clj -T:whitespace-linter lint
 ```
 
+# Running with Leiningen
+
+Add the whitespace linter dependency info to your `project.clj` and run it with
+
+```
+lein run -m clojure.main -e "(require 'whitespace-linter) (whitespace-linter/lint {:paths [\"src\" \"test\"]})"
+```
+
 # Configuration
 
 You can configure the linter by setting `:exec-args` in the `deps.edn` alias, or by passing them as arguments to
